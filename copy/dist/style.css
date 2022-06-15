@@ -1,0 +1,103 @@
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.container {
+  max-width: 1024px;
+  margin: 1rem auto;
+}
+
+.header {
+  text-align: center;
+  margin: 2rem;
+}
+
+.link {
+  cursor: pointer;
+  color: #0000ee;
+}
+
+.contest-preview {
+  margin: 1rem;
+  border: thin solid #ccc;
+}
+
+.contest-preview .category {
+  border-bottom: thin solid #ccc;
+  padding: 0.5rem;
+  font-weight: bold;
+  color: #333;
+  background-color: #eee;
+}
+
+.contest-preview .contest {
+  color: #333;
+  padding: 0.5rem;
+}
+
+.contest .title {
+  border: thin solid #ccc;
+  padding: 0.5rem;
+  font-weight: bold;
+  background-color: #eee;
+}
+
+.contest .description,
+.contest .body {
+  border: thin solid #ccc;
+  border-top: unset;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.contest .body .list .item {
+  margin: 0.5rem;
+}
+
+.contest .body form {
+  margin: 0.25rem;
+}
+
+form input,
+form textarea {
+  width: 300px;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: thin solid #ccc;
+  border-radius: 0.25rem;
+}
+
+form button {
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: thin solid #ccc;
+  border-radius: 0.25rem;
+}
+
+.add-new-contest form {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-new-contest input,
+.add-new-contest textarea {
+  display: block;
+  margin-top: 1rem;
+}
+
+.add-new-contest .link {
+  font-size: 1.2rem;
+  margin: 2rem auto;
+  text-align: center;
+}
