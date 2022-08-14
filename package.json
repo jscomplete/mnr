@@ -1,0 +1,26 @@
+{
+  "name": "mnr",
+  "version": "1.0.0",
+  "description": "Video Course (recorded August 2022): **[samer.dev/mnr](https://samer.dev/mnr)**",
+  "main": "index.js",
+  "scripts": {
+    "test": "tsc -v"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jscomplete/mnr.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jscomplete/mnr/issues"
+  },
+  "homepage": "https://github.com/jscomplete/mnr#readme",
+  "dependencies": {
+    "typescript": "^4.7.4"
+  },
+  "devDependencies": {
+    "eslint": "^8.22.0",
+    "prettier": "^2.7.1"
+  }
+}
