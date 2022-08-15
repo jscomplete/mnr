@@ -14,9 +14,10 @@ server.set("view engine", "ejs");
 server.use("/api", apiRouter);
 
 server.get("/", async (req, res) => {
-  const { initialMarkup } = await serverRender();
+  const { initialMarkup, initialData } = await serverRender();
   res.render("index", {
     initialMarkup,
+    initialData,
   });
 });
 
