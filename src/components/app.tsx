@@ -5,11 +5,11 @@ import ContestList from "./contest-list";
 
 const App = ({ initialData }) => {
   const [page, setPage] = useState<"contestList" | "contest">(
-    "contestList",
+    initialData.currentContest ? "contest" : "contestList",
   );
-  const [currentContestId, setCurrentContestId] = useState<
-    string | undefined
-  >();
+  const [currentContest, setCurrentContest] = useState<
+    object | undefined
+  >(initialData.currentContest);
 
   useEffect(() => {
     window.onpopstate = (event) => {
@@ -17,7 +17,7 @@ const App = ({ initialData }) => {
         ? "contest"
         : "contestList";
       setPage(newPage);
-      setCurrentContestId(event.state?.contestId);
+      setCurrentContest({ id: event.state?.contestId });
     };
   }, []);
 
@@ -28,7 +28,7 @@ const App = ({ initialData }) => {
       `/contest/${contestId}`,
     );
     setPage("contest");
-    setCurrentContestId(contestId);
+    setCurrentContest({ id: contestId });
   };
 
   const pageContent = () => {
@@ -41,7 +41,7 @@ const App = ({ initialData }) => {
           />
         );
       case "contest":
-        return <Contest id={currentContestId} />;
+        return <Contest initialContest={currentContest} />;
     }
   };
 
