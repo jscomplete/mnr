@@ -2,7 +2,6 @@ import { useState } from "react";
 
 import Contest from "./contest";
 import ContestList from "./contest-list";
-import Header from "./header";
 
 const App = ({ initialData }) => {
   const [page, setPage] = useState<"contestList" | "contest">(
@@ -31,13 +30,7 @@ const App = ({ initialData }) => {
     }
   };
 
-  return (
-    <div className="container">
-      <Header message="Naming Contests" />
-
-      {pageContent()}
-    </div>
-  );
+  return <div className="container">{pageContent()}</div>;
 };
 
 export default App;
