@@ -7,11 +7,13 @@ import Header from "./header";
 const Contest = ({ initialContest }) => {
   const [contest, setContest] = useState(initialContest);
 
-  // useEffect(() => {
-  //   fetchContest(id).then((contest) => {
-  //     setContest(contest);
-  //   });
-  // }, [id]);
+  useEffect(() => {
+    if (!contest.names) {
+      fetchContest(contest.id).then((contest) => {
+        setContest(contest);
+      });
+    }
+  }, [contest.id, contest.names]);
 
   return (
     <>
