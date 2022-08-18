@@ -33,4 +33,6 @@ router.get("/contest/:contestId", async (req, res) => {
   res.send({ contest });
 });
 
+router.post("/contest/:contestId", async (req, res) => {});
+
 export default router;
