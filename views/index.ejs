@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" >
     <title>Naming Contest</title>
+
+    <script>
+        window.initialData = <%- JSON.stringify(initialData) -%>
+    </script>
 </head>
 <body>
-    <div id="app"><%- initialContent -%></div>
+    <div id="app"><%- initialMarkup -%></div>
 
 
     <script src="main.js"></script>

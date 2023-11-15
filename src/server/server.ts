@@ -1,21 +1,27 @@
 import express from "express";
-import config from "./config"
+import os from "node:os"
+import config from "./config";
+import apiRouter from "./ap-router";
+import ServerRender from "./render";
 
 const server = express();
 server.use(express.static("dist"));
+server.use("/api",apiRouter)
 
 server.set("view engine", "ejs");
 
-server.use("/", (req, res) => {
+server.get("/", async (req, res) => {
+    const { initialMarkup, initialData } = await ServerRender()
     res.render("index", {
-        initialContent: "Loading...... "
+        initialMarkup,
+        initialData
     });
 });
 
 server.listen(config.PORT, () => {
     console.info(
         `Express server is listening at ${config.SERVER_URL}`,
-        // `Free Mem: ${os.freeem()/1024/1024}`
+        `Free Mem: ${os.freemem()/1024/1024}`
     );
 });
 

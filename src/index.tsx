@@ -1,13 +1,9 @@
 import {createRoot} from "react-dom/client"
+import App from "./components/App";
 
-const App = () => {
-    return(
-        <div>
-            Hrllo World
-        </div>
-    );
-};
 
 const container = document.getElementById("app");
 const root = createRoot(container);
-root.render(<App/>);
+
+
+root.render(<App initialData = {(window as any).initialData}/>);

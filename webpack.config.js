@@ -1,3 +1,5 @@
+const webpack = require("webpack");
+
 module.exports = {
   entry: "./src/index.tsx",
   resolve: {
@@ -14,4 +16,10 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new webpack.EnvironmentPlugin({
+      HOST:"localhost",
+      PORT:"8080",
+    }),
+  ],
 };
