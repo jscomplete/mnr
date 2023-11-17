@@ -1,10 +1,26 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import ContestList from "./ContestList";
-import Header from "./Header";
+import Contest from "./Contest";
 
 const App = ({initialData}) => {
     // console.log(initialData);
     const [page, setPage] = useState("contestList");
+    const [currentContestId, setcurrentContestId] = useState();
+
+    useEffect(() => {
+      window.onpopstate = (event) => {
+        const newPage = event.state?.contestId ? "contest":"contestList";
+        setPage(newPage);
+        setcurrentContestId(event.state?.contestId)
+      }
+    }, [])
+    
+
+    const navigateToContest = (contestId) => {
+        window.history.pushState({contestId},"", `/contest/${contestId}`)
+        setPage("contest");
+        setcurrentContestId(contestId)
+    }
 
     const pageContent = () => {
         switch (page) {
@@ -12,16 +28,13 @@ const App = ({initialData}) => {
                 return(
                     <ContestList initialContest={initialData.contests} onContestClick= {navigateToContest}/>);
             case "contest":
-                return "";
+                return <Contest id={currentContestId}/>;
         }
     }
-    const navigateToContest = () => {
-        setPage("contest")
-    }
+    
 
     return(
         <div className="container">
-            <Header message = "Naming Contest"/>
            {pageContent()}
         </div>
     );
