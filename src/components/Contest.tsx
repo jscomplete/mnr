@@ -3,7 +3,7 @@ import { fetchSingleContests } from "../api-client";
 import Header from "./Header";
 
 
-const Contest = ({initialContest}) => {
+const Contest = ({initialContest, navigatecontest}) => {
     const [contest, setContests] = useState(initialContest);
 
     useEffect(() => {
@@ -13,7 +13,12 @@ const Contest = ({initialContest}) => {
             });
         }
         
-    },[contest.id, contest.name]);
+    },[contest.id, contest.names]);
+
+    const HandleClick = (event) => {
+        event.preventDefault();
+        navigatecontest();
+    }
     
     return (
         <>
@@ -22,6 +27,7 @@ const Contest = ({initialContest}) => {
                 <div className="title">Contest Description</div>
                 <div className="description">{contest.description}</div>
             </div>
+            <a href="/" className="link" onClick={HandleClick}>Contest Link</a>
             </>
     )
 }
