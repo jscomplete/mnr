@@ -3,15 +3,17 @@ import { fetchSingleContests } from "../api-client";
 import Header from "./Header";
 
 
-const Contest = ({id}) => {
-    const [contest, setContests] = useState({});
+const Contest = ({initialContest}) => {
+    const [contest, setContests] = useState(initialContest);
 
     useEffect(() => {
-        fetchSingleContests(id).then((contest) => {
-            setContests(contest);
-        });
-    },[id]);
-    // console.log(contest);
+        if (!contest.names) {
+            fetchSingleContests(contest.id).then((contest) => {
+                setContests(contest);
+            });
+        }
+        
+    },[contest.id, contest.name]);
     
     return (
         <>
@@ -19,7 +21,6 @@ const Contest = ({id}) => {
             <div className="contest">
                 <div className="title">Contest Description</div>
                 <div className="description">{contest.description}</div>
-
             </div>
             </>
     )

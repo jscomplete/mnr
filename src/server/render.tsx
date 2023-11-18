@@ -1,14 +1,17 @@
 import ReactDomServer from "react-dom/server";
 
-import { fetchContests } from "../api-client";
+import { fetchContests, fetchSingleContests } from "../api-client";
 
 import App from "../components/App"
 
-const ServerRender = async () => {
-    const contests = await fetchContests()
+const ServerRender = async (req) => {
+    const { contestId } = req.params;
 
-    const initialMarkup = ReactDomServer.renderToString(<App initialData = {{ contests}}/>)
+    const initialData = contestId
+    ? {currentContest: await fetchSingleContests(contestId)}
+    : {contests: await fetchContests() }
+    const initialMarkup = ReactDomServer.renderToString(<App initialData = {initialData}/>)
 
-    return {initialMarkup, initialData: {contests}}
+    return {initialMarkup, initialData}
 } 
 export default ServerRender;

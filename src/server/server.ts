@@ -10,8 +10,8 @@ server.use("/api",apiRouter)
 
 server.set("view engine", "ejs");
 
-server.get("/", async (req, res) => {
-    const { initialMarkup, initialData } = await ServerRender()
+server.get(["/", "/contest/:contestId"], async (req, res) => {
+    const { initialMarkup, initialData } = await ServerRender(req)
     res.render("index", {
         initialMarkup,
         initialData
